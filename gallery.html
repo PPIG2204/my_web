@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Photo Gallery - upDate / unDo</title>
+<style>
+  #image {
+    width: 600px;
+    height: 300px;
+    border: 2px solid #333;
+    background-color: #ccc;
+    background-image: url('');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  .preview {
+    width: 150px;
+    height: 100px;
+    margin: 5px;
+    cursor: pointer;
+    border: 2px solid #333;
+  }
+</style>
+</head>
+<body>
+
+<div id="image">Hover over an image below to display here.</div>
+
+<img class="preview" src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?w=400" alt="Smiling man portrait" onmouseover="upDate(this)" onmouseout="unDo()">
+<img class="preview" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400" alt="Beautiful lake and mountains" onmouseover="upDate(this)" onmouseout="unDo()">
+<img class="preview" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400" alt="Cup of coffee" onmouseover="upDate(this)" onmouseout="unDo()">
+
+<script>
+function upDate(previewPic) {
+  console.log("upDate triggered");
+  console.log("alt: " + previewPic.alt);
+  console.log("src: " + previewPic.src);
+
+  document.getElementById('image').innerHTML = previewPic.alt;
+  document.getElementById('image').style.backgroundImage = "url('" + previewPic.src + "')";
+}
+
+function unDo() {
+  document.getElementById('image').style.backgroundImage = "url('')";
+  document.getElementById('image').innerHTML = "Hover over an image below to display here.";
+}
+</script>
+
+</body>
+</html>
