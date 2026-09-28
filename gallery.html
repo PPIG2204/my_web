@@ -2,13 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Photo Gallery - upDate / unDo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Photo Gallery</title>
 <style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #ffffff;
+    color: #000000;
+  }
   #image {
     width: 600px;
     height: 300px;
     border: 2px solid #333;
-    background-color: #ccc;
+    background-color: #e0e0e0;
     background-image: url('');
     background-size: cover;
     background-position: center;
@@ -18,6 +25,7 @@
     text-align: center;
     font-size: 20px;
     margin-bottom: 15px;
+    color: #000;
   }
   .preview {
     width: 150px;
@@ -26,15 +34,25 @@
     cursor: pointer;
     border: 2px solid #333;
   }
+  .preview:focus {
+    outline: 3px solid #005fcc;
+    outline-offset: 2px;
+  }
 </style>
 </head>
 <body>
 
+<h1>Interactive Photo Gallery</h1>
+<h2>Hover or Tab to preview images</h2>
+
 <div id="image">Hover over an image below to display here.</div>
 
-<img class="preview" src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?w=400" alt="Smiling man portrait" onmouseover="upDate(this)" onmouseout="unDo()">
-<img class="preview" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400" alt="Beautiful lake and mountains" onmouseover="upDate(this)" onmouseout="unDo()">
-<img class="preview" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400" alt="Cup of coffee" onmouseover="upDate(this)" onmouseout="unDo()">
+<img class="preview" src="ha_long.jpg" alt="Ha Long Bay with limestone islands" tabindex="0" onmouseover="upDate(this)" onmouseleave="unDo()" onfocus="upDate(this)" onblur="unDo()">
+<img class="preview" src="sapa.jpg" alt="Sapa terraced rice fields" tabindex="0" onmouseover="upDate(this)" onmouseleave="unDo()" onfocus="upDate(this)" onblur="unDo()">
+<img class="preview" src="dong_phong_nha.jpg" alt="Phong Nha cave interior" tabindex="0" onmouseover="upDate(this)" onmouseleave="unDo()" onfocus="upDate(this)" onblur="unDo()">
+<img class="preview" src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?w=400" alt="Smiling man portrait" tabindex="0" onmouseover="upDate(this)" onmouseleave="unDo()" onfocus="upDate(this)" onblur="unDo()">
+<img class="preview" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400" alt="Beautiful lake and mountains" tabindex="0" onmouseover="upDate(this)" onmouseleave="unDo()" onfocus="upDate(this)" onblur="unDo()">
+<img class="preview" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400" alt="Cup of coffee on table" tabindex="0" onmouseover="upDate(this)" onmouseleave="unDo()" onfocus="upDate(this)" onblur="unDo()">
 
 <script>
 function upDate(previewPic) {
@@ -50,6 +68,17 @@ function unDo() {
   document.getElementById('image').style.backgroundImage = "url('')";
   document.getElementById('image').innerHTML = "Hover over an image below to display here.";
 }
+
+function addTabFocus() {
+  console.log("onload event triggered - addTabFocus started");
+  var images = document.querySelectorAll('.preview');
+  for (var i = 0; i < images.length; i++) {
+    images[i].setAttribute('tabindex', '0');
+    console.log("Image " + (i + 1) + " tabindex added - alt: " + images[i].alt);
+  }
+}
+
+window.addEventListener('load', addTabFocus);
 </script>
 
 </body>
