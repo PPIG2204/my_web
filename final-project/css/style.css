@@ -1,0 +1,121 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #dedede;
+  color: #000000;
+}
+
+h1 {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 32px;
+}
+
+a {
+  color: #000000;
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+}
+
+p {
+  font-size: 25px;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+/* Mobile-first: one column grid, 10px gap */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+figure {
+  background-color: #ffffff;
+  color: #000000;
+  border: 3px solid #333333;
+  padding: 10px;
+  margin: 0;
+  text-align: center;
+}
+
+figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+figcaption {
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  padding-top: 8px;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+}
+
+/* Tablet view: 772px */
+@media screen and (min-width: 772px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  figure {
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  figure:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Large screen view: 992px */
+@media screen and (min-width: 992px) {
+  figure {
+    border-radius: 0;
+  }
+
+  figure:nth-child(3n) {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Reduced motion: remove scroll animation */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Dark mode: dark figures, light yellowish text, black border */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #121212;
+    color: #ffffff;
+  }
+
+  h1,
+  p {
+    color: #ffffff;
+  }
+
+  a {
+    color: #ffeb99;
+  }
+
+  figure {
+    background-color: #1a1a1a;
+    color: #ffeb99;
+    border-color: #000000;
+  }
+}
